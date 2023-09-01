@@ -6,7 +6,7 @@ defineProps<{
   category: { name: string; traduction: string };
 }>();
 
-const icons = ref([1, 2, 3, 4, 5]);
+const icons = [1, 2, 3, 4, 5];
 </script>
 
 <template>
