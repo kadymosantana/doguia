@@ -8,7 +8,7 @@ const debouncedBreedValue = refDebounced(breedValue, 300);
 
 const protectivenessValue = ref("");
 const energyValue = ref("");
-// const treinabilityValue = ref("");
+const trainabilityValue = ref("");
 
 const { data: breeds, pending } = await useFetch<Breed[]>("https://api.api-ninjas.com/v1/dogs", {
   headers: {
@@ -19,15 +19,10 @@ const { data: breeds, pending } = await useFetch<Breed[]>("https://api.api-ninja
     name: breedValue,
     min_height: 1,
     protectiveness: protectivenessValue,
-    energy: energyValue
-    // treinability: treinabilityValue,
+    energy: energyValue,
+    trainability: trainabilityValue
   },
-  watch: [
-    debouncedBreedValue,
-    protectivenessValue,
-    energyValue
-    // treinabilityValue,
-  ]
+  watch: [debouncedBreedValue, protectivenessValue, energyValue, trainabilityValue]
 });
 </script>
 
@@ -41,7 +36,7 @@ const { data: breeds, pending } = await useFetch<Breed[]>("https://api.api-ninja
       <div class="flex w-full gap-4">
         <SelectInput v-model="protectivenessValue">Cão de guarda</SelectInput>
         <SelectInput v-model="energyValue">Energia</SelectInput>
-        <!-- <SelectInput v-model="treinabilityValue">Treinabilidade</SelectInput> -->
+        <SelectInput v-model="trainabilityValue">Treinabilidade</SelectInput>
       </div>
 
       <div v-if="pending" class="flex items-center justify-center">
